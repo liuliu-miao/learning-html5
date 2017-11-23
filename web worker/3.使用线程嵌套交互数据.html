@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>使用线程嵌套交互数据</title>
+<style>
+    body {
+	font-size:12px
+}
+.b {
+	border:solid 1px #ccc;background-color:#eee;line-height:18px;font-size:12px	
+}
+.t {
+	border:solid 1px #ccc;line-height:18px;font-size:12px;padding-left:3px
+}
+fieldset{
+	padding:10px;width:285px;float:left
+}
+#p{
+	display:none;border:1px #ccc solid; width:248px; background-color:#eee;padding:6px 12px 6px 12px;
+margin-left:2px
+}
+</style>
+<script type="text/javascript">
+    function $$(id) {
+        return document.getElementById(id);
+    }
+
+    var objWorker = new Worker("js/3.script.js");
+
+    function load() {
+        objWorker.addEventListener('message',
+        function (event) {
+            $$("p").style.display = "block";
+            $$("p").innerHTML += event.data;
+        },
+        false);
+    }
+
+    function click1() {
+        var str_text_value = $$("tn").value;
+        if (str_text_value.length > 0) {
+            objWorker.postMessage(str_text_value);
+            $$("tn").value = "";
+        }
+    }
+</script>
+</head>
+<body onLoad="load();">
+ <fieldset>
+   <legend>请输入你想生成多少位数的随机数</legend>
+   <p id="p"></p>
+   <input id="tn" type="text" class="t"> 
+   <input id="bu" type="button" value="请求" 
+          class="b" onClick="click1();">
+ </fieldset>
+</body>
+</html>

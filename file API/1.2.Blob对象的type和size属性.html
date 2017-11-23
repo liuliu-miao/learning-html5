@@ -1,0 +1,34 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Blob对象的type和size属性</title>
+    <script>
+	function show_file_info()
+	{
+	    var file;
+	    var size;
+	    var type;
+		var string="";
+		for(var i=0;i<document.getElementById('file').files.length;++i)
+		{
+		    file = document.getElementById('file').files[i];
+		    size = file.size.toString();
+		    if (file.type == "")
+		        type = "未知";
+		    else
+		        type = file.type.toString();
+		    string=string+"文件大小："+size+"bytes, 文件类型："+type+"<br/"+">";
+		}
+		document.getElementById('p').innerHTML = string;
+	}
+    </script>
+</head>
+
+<body>
+	选择文件：
+    <input type="file" id="file" multiple size="50">
+    <input type="button" onClick="show_file_info();" value="显示文件信息"><br/>
+    <p id="p"></p>
+</body>
+</html>

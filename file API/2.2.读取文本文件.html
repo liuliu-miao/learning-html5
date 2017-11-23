@@ -1,0 +1,42 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>读取文本文件</title>
+<script>
+    function initial()
+    {
+        var file = document.getElementById('file').files[0];
+        var result = document.getElementById("result");
+        if (typeof FileReader == 'undefined') {
+            alert("抱歉，您的浏览器不支持FileReader");
+            file.setAttribute('disabled', 'disabled');
+        }
+    }
+	function read_text()
+	{
+		var file = document.getElementById("file").files[0];
+		var reader = new FileReader();
+		reader.readAsText(file);
+		reader.onload = function () {
+		    result.textContent = this.result;
+		}
+	}
+</script>
+</head>
+
+<body onload="initial();">
+	<p align="center">
+    选择图像文件：
+    <input type="file" id="file">
+    <input type="button" onClick="read_text();" value="上传">
+    </p>
+	<section align="center">
+    	<h1>
+        	<font color="blue">文件内容</font>
+        </h1>
+        <textarea id="result" rows="10" cols="80">
+        </textarea>
+    </section>
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>线程的单层嵌套</title>
+<style>
+h1 {
+	color:blue;
+}
+</style>
+<script type="text/javascript">
+    var worker = new Worker("js/1.script.js");
+    worker.postMessage("");//此代码把""消息传给script.js
+    worker.onmessage = function (event) {//下一级(script.js)发出消息，被此代码接收到，然后此代码执行下列操作
+        if (event.data != "") {
+            var row;
+            var col;
+            var tr;
+            var td;
+            var int_array = event.data.split(";");
+            var table = document.getElementById("table");
+            for (var i = 0; i < int_array.length; ++i) {
+                row = parseInt(i / 10, 0);
+                col = i % 10;
+                if (col == 0)    //该行不存在
+                {
+                    tr = document.createElement("tr");//添加行
+                    tr.id = "tr" + row;
+                    tr.style.backgroundColor = "orange";
+                    table.appendChild(tr);
+                }
+                else  //该行已存在       
+                    tr = document.getElementById("tr" + row);
+                td = document.createElement("td");//添加列
+                tr.appendChild(td);
+                td.innerHTML = int_array[row * 10 + col];//设置该列内容
+                if ((int_array[row * 10 + col]) % 2 == 0) {
+                    td.style.backgroundColor = "red";//设置该列背景色
+                }
+                td.style.color = "black "; //设置该列字体颜色               
+                td.width = "30";//设置列宽
+            }
+        }
+    };
+</script>
+</head>
+
+<body>
+	<h1>从随机生成的数字中抽取5的倍数并高亮显示能被2整除的数（请勿使用Opera）</h1>
+	<table id="table">
+	</table>
+</body>
+</html>

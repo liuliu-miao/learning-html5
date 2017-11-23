@@ -1,0 +1,25 @@
+﻿    function initial()
+    {
+        var file = document.getElementById('file');
+        var preview = document.getElementById("preview");
+        if (typeof FileReader == 'undefined') {
+            preview.innerHTML = "<p" + " align='center'>抱歉，您的浏览器不支持FileReader</p" + '>';
+            file.setAttribute('disabled', 'disabled');
+        }
+    }
+	function read_image()
+	{
+		var file = document.getElementById("file");
+    	if(!/image\/\w+/.test(file.type))
+		    preview.innerHTML="<p"+" align='center' color='red'>请确保文件为图像类型</p"+'>';
+		else
+		{
+		    var reader = new FileReader();
+		    reader.readAsDataURL(file);
+		    reader.onload=function()
+		    {
+		        preview.innerHTML = this.result 
+		    }
+		}
+		
+	}

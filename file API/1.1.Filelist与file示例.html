@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Filelist与file示例</title>
+<script>
+	function show_name()
+	{
+		var file;
+		for(var i=0;i<document.getElementById('file').files.length;++i)
+		{
+			file=document.getElementById('file').files[i];
+			alert(file.name);
+		}
+	}
+</script>
+</head>
+
+<body>
+	选择文件：
+    <input type="file" id="file" multiple size="50">
+    <input type="button" onClick="show_name();" value="上传文件">
+</body>
+</html>

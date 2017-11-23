@@ -1,0 +1,111 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>HTML5 referfence</title>
+	<link href="lib/jquery/base/jquery-ui.min.css" rel="stylesheet">
+	<link href="lib/reference.css" rel="stylesheet">
+	<script src="lib/tree.js"></script>
+	<script src="lib/jquery/jquery.min.js"></script>
+	<script src="lib/jquery/jquery-ui.min.js"></script>
+	<script>
+		['accordion_header', 'accordion_content'].forEach(function (value) { document.createElement(value); });
+	</script>
+	<script>
+		$(document).ready(function () {
+			$('main').accordion({
+				active: false,
+				animate:150,
+				collapsible: true,
+				//header:'accordion_header',
+				heightStyle: 'content',
+			});
+			$('.accordion').accordion({
+				active: false,
+				animate: 150,
+				collapsible: true,
+				//event: "mouseover",
+				header: 'article>header',
+				heightStyle: 'content',
+
+			});
+		})
+	</script>
+</head>
+<body>
+	<main>			
+		<accordion_header>inline element</accordion_header>
+		<accordion_content class="accordion">
+			the <code>&lt;a&gt;</code> element<br>
+			the <code>&lt;abbr&gt;</code> element<br>
+			the <code>&lt;area&gt;</code> element<br>
+			the <code>&lt;b&gt;</code> element<br>
+			the <code>&lt;bdi&gt;</code> element<br>
+			the <code>&lt;bdo&gt;</code> element<br>
+			the <code>&lt;br&gt;</code> element<br>
+			the <code>&lt;cite&gt;</code> element<br>
+			the <code>&lt;code&gt;</code> element<br>
+			the <code>&lt;command&gt;</code> element<br>
+			the <code>&lt;data&gt;</code> element<br>
+			the <code>&lt;del&gt;</code> element<br>
+			the <code>&lt;details&gt;</code> element<br>
+			the <code>&lt;dfn&gt;</code> element<br>
+			the <code>&lt;dialog&gt;</code> element<br>
+			the <code>&lt;em&gt;</code> element<br>
+			the <code>&lt;i&gt;</code> element<br>
+			the <code>&lt;img&gt;</code> element<br>
+			the <code>&lt;ins&gt;</code> element<br>
+			the <code>&lt;kbd&gt;</code> element<br>
+			the <code>&lt;map&gt;</code> element<br>
+			the <code>&lt;mark&gt;</code> element<br>
+			the <code>&lt;menuitem&gt;</code> element<br>
+			the <code>&lt;param&gt;</code> element<br>
+			the <code>&lt;picture&gt;</code> element<br>
+			the <code>&lt;q&gt;</code> element<br>
+			the <code>&lt;rb&gt;</code> element<br>
+			the <code>&lt;rp&gt;</code> element<br>
+			the <code>&lt;rtc&gt;</code> element<br>
+			the <code>&lt;s&gt;</code> element<br>
+			the <code>&lt;samp&gt;</code> element<br>
+			the <code>&lt;small&gt;</code> element<br>
+			the <code>&lt;span&gt;</code> element<br>
+			the <code>&lt;strong&gt;</code> element<br>
+			the <code>&lt;sub&gt;</code> element<br>
+			the <code>&lt;summary&gt;</code> element<br>
+			the <code>&lt;sup&gt;</code> element<br>
+			the <code>&lt;time&gt;</code> element<br>
+			the <code>&lt;track&gt;</code> element<br>
+			the <code>&lt;u&gt;</code> element<br>
+			the <code>&lt;var&gt;</code> element<br>
+			the <code>&lt;wbr&gt;</code> element<br>
+			其它行内元素:AudioTrackList,VideoTrackList,base,canvas,embed,iframe,keygen,label,legend,link,object,optgroup,option,output,progress,source,video
+
+		</accordion_content>		
+		<accordion_header>block element</accordion_header>
+		<accordion_content class="accordion">
+			<article>
+				<header>the <code>&lt;article&gt;</code> element</header>
+				<div>
+					<p>理解<code>&lt;article&gt;</code>元素的最好方法就是将<code>&lt;article&gt;</code>元素移除之后不会对其他的内容造成很大的影响，而它本身在另一个地方也能表达相对完整的语义。</p>
+				</div>
+			</article>
+			the <code>&lt;aside&gt;</code> element<br>
+			the <code>&lt;blockquote&gt;</code> element<br>
+			the <code>&lt;div&gt;</code> element<br>
+			the <code>&lt;figcaption&gt;</code> element<br>
+			the <code>&lt;figure&gt;</code> element<br>
+			the <code>&lt;footer&gt;</code> element<br>
+			the <code>&lt;header&gt;</code> element<br>
+			the <code>&lt;hr&gt;</code> element<br>
+			the <code>&lt;main&gt;</code> element<br>
+			the <code>&lt;menu&gt;</code> element<br>
+			the <code>&lt;nav&gt;</code> element<br>
+			the <code>&lt;pre&gt;</code> element<br>
+			the <code>&lt;section&gt;</code> element<br>
+			其它块级元素:body,dd,dl,dt,fieldset,form,h1&sim;h6,html,ol,p,ul
+		</accordion_content>	
+		<accordion_header>something</accordion_header>
+		<accordion_content></accordion_content>
+	</main>
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>setCustomValidity() & checkValidity()</title>
+    <script type="text/javascript">
+        function check()
+        {
+            var pass1 = document.getElementById('pass1');
+            var pass2 = document.getElementById('pass2');
+            //if (pass1.value != '' && pass2.value.length == pass1.value.length)
+                if (pass1.value != pass2.value) {
+                    pass2.setCustomValidity("密码不一致");
+                }
+                else
+                    pass2.setCustomValidity("");
+
+            var email = document.getElementById('email');
+            if (!email.checkValidity())
+                email.setCustomValidity("请输入正确的E-mail地址");
+            else
+                email.setCustomValidity('');
+        }
+
+        function check_email(id) {
+            var email = document.getElementById(id);
+            if (email.value == "") {
+                alert("请输入E-mail地址");
+                return false;
+            }
+            else if (!email.checkValidity())
+                alert("请输入正确的E-mail地址");//其实这段话根本就没有显示的机会
+            else
+                alert("您输入的E-mail地址有效");
+        }
+    </script>
+</head>
+
+<body>
+    <p>使用setCustomValidity()自定义错误信息</p>
+    <form id="test_form" oninput="check()">
+        密码：<input type="password" name="pass1" id="pass1"><br/>
+        确认密码：<input type="password" name="pass2" id="pass2"><br/>
+        E-mail:<input id="email" type="email" name="email"><br/>
+        <input type="submit" value="提交" >
+    </form>
+    <hr>
+    <p>使用checkValidity()显式验证</p>
+    <form id="test_form" onsubmit="return check_email('email');">
+        E-mail:<input id="email" type="email" name="email">
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

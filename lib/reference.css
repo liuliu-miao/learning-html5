@@ -1,0 +1,31 @@
+		accordion_header,accordion_content {
+			display:block;
+		}
+		p {
+			background-color:rgba(224,255,255,0.3);/*lightcyan with opacity;*/
+		}
+		.example { 
+			 border-left: solid 0.25em #52E052;
+			 background: none repeat scroll 0 0 ;
+			 background-color:antiquewhite;
+		 }
+		 p.example, div.example { padding: 0.5em 2em; }
+		 p.example:before { 
+			 content: 'Example: '; 
+			 font-weight: bolder;
+		 }
+		.note { 
+			 border-left: solid 0.25em #52E052;
+			 background: none repeat scroll 0 0 #E9FBE9;
+		 }
+		 p.note, div.note { padding: 0.5em 2em; }
+		 p.note:before { 
+			 content: 'Note: '; 
+			 font-weight: bolder;
+		 }
+		 code {
+			 color:blue;
+		 }
+		 code.span {
+			 background-color:lavender;
+		 }

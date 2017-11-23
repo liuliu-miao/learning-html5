@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息卡</title>
+    <script type="text/javascript">
+    function saveStorage()
+    {
+        var data = new Object;
+        data.name = document.getElementById('name').value;
+        data.email = document.getElementById('email').value;
+        data.telephone = document.getElementById('telephone').value;
+        data.memo = document.getElementById('memo').value;
+        var str = JSON.stringify(data);
+        localStorage.setItem(data.name, str);
+        alert("数据已保存。");
+    }
+
+    function findStorage(id)
+    {
+        var target = document.getElementById(id);
+        var find = document.getElementById('find').value;
+        var str = localStorage.getItem(find);
+        if (str == null)
+            target.innerHTML = "<font"+" color='red'>"+"sorry,用户信息不存在！</"+"font>";
+        else
+        {
+            var data = JSON.parse(str);
+            var result = "姓名: " + data.name + '<br>';
+            result += "EMAIL: " + data.email + '<br>';
+            result += "电话号码: " + data.telephone + '<br>';
+            result += "备注: " + data.memo + '<br>';
+            target.innerHTML = result;
+        }
+    }
+    </script>
+</head>
+<body>
+    <h1>用户信息卡</h1>
+    <table>
+        <tr>
+            <td align="right">姓名:</td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <td align="right">EMAIL:</td>
+            <td><input type="text" id="email"></td>
+        </tr>
+        <tr>
+            <td align="right">电话号码:</td>
+            <td><input type="text" id="telephone"></td>
+        </tr>
+        <tr>
+            <td align="right">备注:</td>
+            <td><input type="text" id="memo"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="button" value="保存" onClick="saveStorage();">
+            </td>
+        </tr>
+    </table>
+    <hr color="red">
+    <p>
+        查询：
+        <input type="text" id="find">
+        <input type="button" value="按姓名查询" onClick="findStorage('message');">
+    </p>
+    <p id="message"></p>
+</body>

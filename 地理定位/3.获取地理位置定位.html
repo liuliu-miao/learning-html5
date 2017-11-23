@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script>
+   jQuery(window).ready(function(){
+   jQuery("#btnInit").click(initiate_geolocation);
+   });
+  
+   function initiate_geolocation() {
+   navigator.geolocation.getCurrentPosition(handle_geolocation_query);
+   }
+  
+   function handle_geolocation_query(position){
+   alert('纬度: ' + position.coords.latitude + ' ' +'经度: ' + position.coords.longitude);
+   }
+ </script>
+<title>获取地理位置定位</title>
+</head>
+
+<body>
+    <div>
+        <button id="btnInit">地理位置定位</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>拖放示例</title>
+<script>
+    function initial()
+    {
+        var source = document.getElementById('drag_me');
+        var dest = document.getElementById('dest');
+
+        source.addEventListener("dragstart", function (event) {
+            var dt = event.dataTransfer;
+            dt.effectAllowed = 'all';
+            dt.setData("text/plain", "HTML5欢迎您!");
+        }, false);
+
+        dest.addEventListener("dragend", function (event) {
+            event.preventDefault();//目标元素拖放结束时不执行默认处理（拒绝拖放）
+        }, false);
+
+        dest.addEventListener("drop", function (event) {
+            var dt = event.dataTransfer;
+            var text = dt.getData("text/plain");
+            dest.textContent += text;
+            event.preventDefault();//其它元素被拖放进本元素（目标元素）时不执行默认处理（拒绝拖放）
+            event.stopPropagation();
+        }, false);
+
+        document.ondragover = function (event) { event.preventDefault(); };//拖放中鼠标经过该元素（页面）时不执行默认处理（拒绝拖放）
+        document.ondrop = function (event) { event.preventDefault(); };
+    }
+</script>
+</head>
+
+<body onLoad="initial()">
+	<div id="drag_me" draggable="true" style="width:200px; border:1px solid red;">
+    	请拖放我
+    </div>
+    <br/>
+    <div id="dest" style="width:200px; height:200px; border:1px solid blue;"></div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link href="lib/reference.css" rel="stylesheet">
+	<script src="lib/cssrefresh.js"></script>
+	<script src="lib/tree.js"></script>
+	<script>
+		['accordion_header', 'accordion_content'].forEach(function (value) { document.createElement(value); });
+	</script>
+	<script>
+
+	</script>
+</head>
+<body>
+	<main>	
+		<h1>syntax</h1>
+		<article>
+			<header>用<code class="span">{}</code>直接创建对象的示例</header>		
+			<p class="example"><code>person={firstname:"John",lastname:"Doe",age:50,eyecolor:"blue"};</code></p>
+			<p class="note">
+				在最后一个属性与<code class="span">}</code>之间不要有<code class="span">,</code>。但是即使加上了<code class="span">,</code>,浏览器基本也能接受，为了开发时增减属性的方便，作者一般会加上。
+			</p>		
+		</article>
+	
+		<h1>types,equlity,conversion</h1>
+			<article>
+				<header>equality</header>
+					<dl>
+						<dt>a wired featrue of NaN</dt>
+						<dd>NaN != NaN and NaN ==NaN is false, use isNaN() instead</dd>
+						<dt>compare diferent types(<code class="span">==</code> and <code class="span">!=</code>)</dt>
+						<dd>
+							<ol>
+								<li>When comparing a boolean with any other type, the boolean is converted to a number and comparing goes on.</li>
+								<li>A string is converted to a number when compared with a number. Especially <code class="span">""</code> is converted to <code class="span">0</code>.</li>
+								<li><code class="span">undefined == null</code></li>
+							</ol>
+						</dd>
+						<dt>more compares</dt>
+						<dd>
+							<ol>
+								<li>>= and <= can only compare strings and numbers, otherwise will return false.</li>
+								<li>A string is converted to a number when compared with a number. Especially <code class="span">""</code> is converted to <code class="span">0</code>.</li>
+								<li><code class="span">0 < true</code> because <code class="span">true</code> is converted to <code class="span">1</code></li>
+							</ol>
+						</dd>
+					</dl>
+			</article>
+			<article>
+				<header>convertion</header>
+					when you call <code class="span">isNaN(num)</code>, <code class="span">num</code> will be automatically converted to a number<br>
+			</article>
+
+		<h1>leftovers</h1>
+			<article>
+				<header></header>
+				Javascript has the same lexical scope as R.
+			</article>
+			<article>
+				<header>random</header>
+				Math.floor(Math.random() * n) generals random numbers between 0 and n(exclude n)
+			</article>
+
+		<h1>OOP</h1>
+			<article>
+				<header>prototype</header>
+				ShowDog.prototype = new Dog();<br>
+				ShowDog.prototype.constructor = ShowDog;<br>
+					function ShowDog(name, breed, weight, handler) {
+					Dog.call(this, name, breed, weight);
+
+					this.handler = handler;
+					}
+			</article>
+			<article>
+				<header>the <code>&lt;article&gt;</code> element</header>
+				<div>
+					<p>理解<code>&lt;article&gt;</code>元素的最好方法就是将<code>&lt;article&gt;</code>元素移除之后不会对其他的内容造成很大的影响，而它本身在另一个地方也能表达相对完整的语义。</p>
+				</div>
+			</article>
+			<article>
+				<header>类的属性</header>
+				<pre>
+		function Robot(name, year, owner) {
+			this.name = name;
+			this.year = year;
+			this.owner = owner;
+		}
+		Robot.prototype.maker = "ObjectsRUs";
+		Robot.prototype.errorMessage = "All systems go.";
+		Robot.prototype.reportError = function() {
+			console.log(this.name + " says " + this.errorMessage);
+		};
+		Robot.prototype.spillWater = function() {
+			this.errorMessage = "I appear to have a short circuit!";
+		};
+		var robby = new Robot("Robby", 1956, "Dr. Morbius");
+		var rosie = new Robot("Rosie", 1962, "George Jetson");
+		rosie.reportError();
+		robby.reportError();
+		robby.spillWater();
+		rosie.reportError();
+		robby.reportError();
+		console.log(robby.hasOwnProperty("errorMessage"));
+		console.log(rosie.hasOwnProperty("errorMessage"));
+				</pre>
+					注意在访问errorMessage的时候，这是原型的属性；但修改了errorMessage之后，就为实例添加了了这一新属性，从而覆盖了原型中的属性。
+			</article>
+	</main>
+
+</body>
+</html>

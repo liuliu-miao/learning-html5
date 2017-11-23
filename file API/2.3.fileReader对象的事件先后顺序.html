@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>fileReader对象的事件先后顺序</title>
+<script>
+	function initial()
+	{
+		var result=document.getElementById("result");
+		var file = document.getElementById('file').files[0];
+		if(typeof FileReader=='undefined')
+		{
+			result.innerHTML = "<p" + " align='center'>抱歉，您的浏览器不支持FileReader</p" + '>';
+			file.setAttribute('disabled', 'disabled');
+		} 
+	}
+	function read_file()
+	{
+		var file = document.getElementById("file").files[0];
+		var reader = new FileReader();
+		reader.onload = function()
+		{
+			result.innerHTML = '<img src="'+this.result+'" alt=""/>'
+			alert("文件读取成功完成");
+		}
+		reader.onprogress = function()
+		{
+			alert("文件读取中");
+		}
+		reader.onabort = function()
+		{
+			alert("文件读取中断");
+		}
+		reader.onerror = function()
+		{
+			alert("文件读取出错");
+		}
+		reader.onloadstart = function()
+		{
+			alert("文件读取开始");
+		}
+		reader.onloadend = function()
+		{
+			alert("文件读取完成，无论成功或失败");
+		}
+		reader.readAsDataURL(file);
+	}
+</script> 
+</head>
+
+<body onload="initial();">
+	<p align="center">
+    选择图像文件：
+    <input type="file" id="file">
+    <input type="button" onClick="read_file();" value="上传">
+    </p>
+	<section align="center">
+    	<h1>
+        	<font color="blue">图像预览</font>
+        </h1>
+        <span id="result"></span>
+    </section>
+</body>
+</html>
+
